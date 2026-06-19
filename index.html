@@ -810,7 +810,7 @@ function openInboxItem(id){
   )
 }
 function saveInbox(id){
-  const m = INBOX.find(x => x.id === id); if (!m) return
+  const m = INBOX.find(x => x.id === +id); if (!m) return
   m.status = $('#iStat').value
   closePanel(); renderInbox(); toast('✓ Сохранено')
 }
