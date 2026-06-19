@@ -2,33 +2,33 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<title>Админ-панель — пример</title>
+<title>Админ-панель — пример (фонд)</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 :root{
-  --bg:#f5f6f8;--surface:#fff;--border:#e5e7eb;--border-strong:#d1d5db;
+  --bg:#f4f6fa;--surface:#fff;--border:#e3e8ef;--border-strong:#cbd5e1;
   --ink:#0f172a;--ink-2:#334155;--mut:#64748b;--faint:#94a3b8;
-  --accent:#4f46e5;--accent-soft:#eef2ff;--accent-2:#4338ca;
+  --accent:#2563eb;--accent-soft:#dbeafe;--accent-2:#1d4ed8;
   --green:#16a34a;--green-soft:#dcfce7;
   --red:#dc2626;--red-soft:#fee2e2;
   --amber:#d97706;--amber-soft:#fef3c7;
-  --shadow-sm:0 1px 2px rgba(15,23,42,.05);
+  --purple:#7c3aed;--purple-soft:#ede9fe;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{font:14px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 a{color:inherit;text-decoration:none}
-input{font:inherit}
+input,textarea,select{font:inherit}
 
-.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
 
 /* sidebar */
 .side{background:#fff;border-right:1px solid var(--border);display:flex;flex-direction:column;padding:18px 12px 6px;position:sticky;top:0;height:100vh;overflow-y:auto}
 .brand{display:flex;align-items:center;gap:10px;padding:0 10px 18px}
-.brand .mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#6366f1,#4338ca);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13.5px;letter-spacing:-.5px;box-shadow:0 4px 10px -4px rgba(79,70,229,.5)}
-.brand .name{font-weight:700;font-size:15px;letter-spacing:-.2px}
-.brand .name small{display:block;font-size:10.5px;color:var(--mut);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-top:1px}
+.brand .mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px;letter-spacing:-.5px;box-shadow:0 4px 12px -4px rgba(37,99,235,.5)}
+.brand .name{font-weight:700;font-size:14.5px;letter-spacing:-.2px;line-height:1.15}
+.brand .name small{display:block;font-size:10.5px;color:var(--mut);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-top:2px}
 .lbl{font-size:10.5px;color:var(--faint);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:14px 12px 6px}
 .nav{display:flex;align-items:center;gap:10px;padding:8px 11px;border-radius:7px;font-size:13.5px;color:var(--ink-2);font-weight:500;transition:.12s}
 .nav:hover{background:var(--bg);color:var(--ink)}
@@ -37,7 +37,7 @@ input{font:inherit}
 .nav .badge{margin-left:auto;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:100px;background:var(--accent);color:#fff}
 .foot{margin-top:auto;border-top:1px solid var(--border);padding:10px 2px 4px}
 .me{display:flex;align-items:center;gap:10px;padding:6px 8px 2px}
-.me .ava{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;display:grid;place-items:center;font-weight:700;font-size:11.5px;flex:none}
+.me .ava{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;display:grid;place-items:center;font-weight:700;font-size:11.5px;flex:none}
 .me b{font-size:13px;font-weight:600;display:block;letter-spacing:-.01em}
 .me small{font-size:11.5px;color:var(--mut)}
 
@@ -49,11 +49,11 @@ input{font:inherit}
 .crumb .sep{color:var(--faint);margin:0 6px}
 .search{position:relative;flex:1;max-width:340px}
 .search input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:7px 12px 7px 32px;font-size:13px;color:var(--ink);transition:.15s}
-.search input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(79,70,229,.12)}
+.search input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
 .search svg{position:absolute;left:10px;top:8.5px;width:14px;height:14px;stroke:var(--faint);stroke-width:1.8;fill:none}
 .btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px;letter-spacing:-.01em;transition:.15s;line-height:1}
 .btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;flex:none}
-.btn-pri{background:var(--accent);color:#fff;box-shadow:0 4px 10px -4px rgba(79,70,229,.45)}
+.btn-pri{background:var(--accent);color:#fff;box-shadow:0 4px 10px -4px rgba(37,99,235,.45)}
 .btn-pri:hover{background:var(--accent-2)}
 .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--border)}
 .btn-ghost:hover{border-color:var(--border-strong)}
@@ -75,6 +75,12 @@ input{font:inherit}
 .stat .delta.up{color:var(--green);background:var(--green-soft)}
 .stat .delta.down{color:var(--red);background:var(--red-soft)}
 
+/* tabs */
+.tabs{display:flex;gap:2px;background:var(--bg);padding:3px;border-radius:9px;width:fit-content;border:1px solid var(--border)}
+.tabs button{font-size:12.5px;font-weight:500;color:var(--mut);padding:6px 12px;border-radius:6px;transition:.12s}
+.tabs button.on{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(15,23,42,.06)}
+.tabs button:hover:not(.on){color:var(--ink)}
+
 /* card + table */
 .card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .card-head{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap}
@@ -83,27 +89,26 @@ input{font:inherit}
 .filter:hover{border-color:var(--border-strong)}
 .filter svg{width:11px;height:11px;stroke:currentColor;stroke-width:2;fill:none}
 
-table.users{width:100%;border-collapse:collapse;font-size:13px}
-table.users th{text-align:left;font-weight:600;font-size:11px;color:var(--mut);letter-spacing:.05em;text-transform:uppercase;padding:11px 18px;background:var(--bg);border-bottom:1px solid var(--border)}
-table.users td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle}
-table.users tr:last-child td{border-bottom:none}
-table.users tr:hover td{background:#fafbfc}
-.u{display:flex;align-items:center;gap:10px}
-.u .ava{width:32px;height:32px;border-radius:50%;color:#fff;display:grid;place-items:center;font-weight:700;font-size:11.5px;flex:none}
-.u b{font-weight:600;font-size:13.5px;letter-spacing:-.01em}
-.u small{display:block;font-size:11.5px;color:var(--mut);margin-top:1px}
-.role{font-size:11px;font-weight:600;padding:2px 8px;border-radius:100px;display:inline-block;letter-spacing:.02em}
-.role.adm{color:#7c3aed;background:#ede9fe}
-.role.mgr{color:#0891b2;background:#cffafe}
-.role.usr{color:#475569;background:#f1f5f9}
-.status{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2)}
-.dot{width:7px;height:7px;border-radius:50%;display:inline-block}
-.dot.on{background:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.18)}
-.dot.off{background:var(--faint)}
-.dot.away{background:var(--amber);box-shadow:0 0 0 3px rgba(217,119,6,.18)}
+table.news{width:100%;border-collapse:collapse;font-size:13px}
+table.news th{text-align:left;font-weight:600;font-size:11px;color:var(--mut);letter-spacing:.05em;text-transform:uppercase;padding:11px 18px;background:var(--bg);border-bottom:1px solid var(--border)}
+table.news td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle}
+table.news tr:last-child td{border-bottom:none}
+table.news tr:hover td{background:#fafbfc}
+.np{display:flex;align-items:center;gap:12px;max-width:480px}
+.np .thumb{width:54px;height:40px;border-radius:7px;flex:none;background-position:center;background-size:cover;background-color:#e2e8f0;font-size:18px;display:grid;place-items:center;color:#fff;letter-spacing:-.5px}
+.np b{font-weight:600;font-size:13.5px;letter-spacing:-.01em;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.np small{display:block;font-size:11.5px;color:var(--mut);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill{font-size:11px;font-weight:600;padding:2px 8px;border-radius:100px;display:inline-block;letter-spacing:.02em}
+.pill.pub{color:var(--green);background:var(--green-soft)}
+.pill.draft{color:var(--mut);background:#e2e8f0}
+.pill.sched{color:var(--accent);background:var(--accent-soft)}
+.cat{font-size:11.5px;color:var(--ink-2);padding:3px 8px;border-radius:6px;background:var(--bg);display:inline-block}
+.views{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--mut);font-feature-settings:'tnum' 1}
+.views svg{width:13px;height:13px;stroke:currentColor;stroke-width:1.8;fill:none}
 .act{display:inline-flex;gap:4px}
 .act button{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;color:var(--mut);transition:.12s}
 .act button:hover{background:var(--bg);color:var(--ink)}
+.act button.del:hover{color:var(--red);background:var(--red-soft)}
 .act svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
 /* toast */
@@ -114,8 +119,8 @@ table.users tr:hover td{background:#fafbfc}
   .app{grid-template-columns:1fr}
   .side{display:none}
   .content{padding:18px}
-  table.users th:nth-child(3),table.users td:nth-child(3),
-  table.users th:nth-child(4),table.users td:nth-child(4){display:none}
+  table.news th:nth-child(3),table.news td:nth-child(3),
+  table.news th:nth-child(5),table.news td:nth-child(5){display:none}
 }
 </style>
 </head>
@@ -123,77 +128,89 @@ table.users tr:hover td{background:#fafbfc}
 <div class="app">
   <aside class="side">
     <div class="brand">
-      <div class="mark">A</div>
-      <div class="name">Acme<small>Admin</small></div>
+      <div class="mark">3В</div>
+      <div class="name">Давай делать<small>добро вместе</small></div>
     </div>
 
-    <div class="lbl">Главное</div>
+    <div class="lbl">Контент</div>
     <a class="nav" href="#"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Дашборд</a>
-    <a class="nav on" href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>Пользователи<span class="badge">128</span></a>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>Роли и доступы</a>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h12"/></svg>Логи активности</a>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg>Биллинг</a>
+    <a class="nav on" href="#"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M8 4v5"/></svg>Новости<span class="badge">24</span></a>
+    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M21 11c0 5-9 11-9 11s-9-6-9-11a9 9 0 0 1 18 0z"/><circle cx="12" cy="11" r="3"/></svg>Проекты помощи<span class="badge">6</span></a>
+    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M3 21V11l9-7 9 7v10"/><path d="M9 21v-7h6v7"/></svg>Учреждения</a>
+    <a class="nav" href="#"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 17 5-5 4 4 5-5 4 4"/></svg>Галерея</a>
+    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Отчёты</a>
 
-    <div class="lbl">Система</div>
+    <div class="lbl">Заявки</div>
+    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M22 11.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10"/><path d="m2 6 10 7 10-7"/></svg>Входящие<span class="badge" style="background:var(--amber)">5</span></a>
+    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Пожертвования</a>
+
+    <div class="lbl">Сайт</div>
+    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M4 4h16v6H4zM4 14h16v6H4z"/></svg>Страницы</a>
     <a class="nav" href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a7 7 0 0 0-1.7-1L16.5 2h-4l-.3 2.6a7 7 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7 7 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 1.7 1l.3 2.6h4l.3-2.6a7 7 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6a7 7 0 0 0 .1-1z"/></svg>Настройки</a>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>Поддержка</a>
 
     <div class="foot">
       <div class="me">
         <div class="ava">БР</div>
-        <div><b>Бр_Им</b><small>Владелец</small></div>
+        <div><b>Бр_Им</b><small>Редактор</small></div>
       </div>
     </div>
   </aside>
 
   <div class="main">
     <header class="top">
-      <div class="crumb">Админ<span class="sep">/</span><b>Пользователи</b></div>
+      <div class="crumb">Админ<span class="sep">/</span><b>Новости</b></div>
       <div class="search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-5-5"/></svg>
-        <input id="globalSearch" placeholder="Поиск по имени, e-mail, роли">
+        <input id="globalSearch" placeholder="Поиск по заголовку и описанию">
       </div>
-      <button class="btn btn-ghost" onclick="toast('Период: за 7 дней')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>За 7 дней</button>
-      <button class="btn btn-pri" onclick="openNew()"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Добавить</button>
+      <button class="btn btn-ghost" onclick="toast('Просмотр сайта откроется в новой вкладке')"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Открыть сайт</button>
+      <button class="btn btn-pri" onclick="openNew()"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Новая запись</button>
     </header>
 
     <div class="content">
       <div class="head">
         <div>
-          <h1>Пользователи</h1>
-          <div class="sub">Управление аккаунтами, ролями и доступом к системе</div>
+          <h1>Новости</h1>
+          <div class="sub">Управление публикациями на сайте фонда</div>
         </div>
       </div>
 
       <div class="stats">
         <div class="stat">
-          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></span>Всего пользователей</div>
-          <div class="val">128<span class="delta up">+12</span></div>
+          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M8 4v5"/></svg></span>Опубликовано</div>
+          <div class="val">24<span class="delta up">+4</span></div>
         </div>
         <div class="stat">
-          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Активные сейчас</div>
-          <div class="val">37</div>
+          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M21 11c0 5-9 11-9 11s-9-6-9-11a9 9 0 0 1 18 0z"/></svg></span>Активных сборов</div>
+          <div class="val">6</div>
         </div>
         <div class="stat">
-          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>Новых за неделю</div>
-          <div class="val">18<span class="delta up">+22%</span></div>
+          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>Собрано за месяц</div>
+          <div class="val">₽ 312&nbsp;500<span class="delta up">+18%</span></div>
         </div>
         <div class="stat">
-          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>MRR</div>
-          <div class="val">₽ 482k<span class="delta up">+8%</span></div>
+          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M22 11.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10"/><path d="m2 6 10 7 10-7"/></svg></span>Открытых заявок</div>
+          <div class="val">5</div>
         </div>
+      </div>
+
+      <div class="tabs" id="tabs">
+        <button class="on" data-f="all">Все <span style="opacity:.55">28</span></button>
+        <button data-f="pub">Опубликованные <span style="opacity:.55">24</span></button>
+        <button data-f="draft">Черновики <span style="opacity:.55">3</span></button>
+        <button data-f="sched">Запланированные <span style="opacity:.55">1</span></button>
       </div>
 
       <div class="card">
         <div class="card-head">
-          <h3>Список пользователей</h3>
-          <button class="filter" onclick="toast('Фильтр по роли')">Роль<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <button class="filter" onclick="toast('Фильтр по статусу')">Статус<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <h3>Записи</h3>
+          <button class="filter" onclick="toast('Фильтр по категории')">Категория<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <button class="filter" onclick="toast('Фильтр по дате')">За всё время<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
           <button class="btn btn-ghost" onclick="toast('Экспорт CSV')" style="font-size:12.5px;padding:6px 10px"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Экспорт</button>
         </div>
-        <table class="users" id="users">
+        <table class="news" id="news">
           <thead>
-            <tr><th>Пользователь</th><th>Роль</th><th>Статус</th><th>Был онлайн</th><th></th></tr>
+            <tr><th>Запись</th><th>Категория</th><th>Статус</th><th>Дата</th><th>Просмотры</th><th></th></tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -205,41 +222,60 @@ table.users tr:hover td{background:#fafbfc}
 <div class="toast" id="toast"></div>
 
 <script>
-const USERS = [
-  {name:'Анна Орлова',     email:'a.orlova@acme.ru',  role:'adm', roleLabel:'Админ',     status:'on',   seen:'сейчас',        color:'#6366f1'},
-  {name:'Дмитрий Соколов', email:'d.sokolov@acme.ru', role:'mgr', roleLabel:'Менеджер',  status:'on',   seen:'2 мин назад',   color:'#06b6d4'},
-  {name:'Мария Иванова',   email:'m.ivanova@acme.ru', role:'usr', roleLabel:'Сотрудник', status:'away', seen:'14 мин назад',  color:'#f59e0b'},
-  {name:'Олег Гусев',      email:'o.gusev@acme.ru',   role:'mgr', roleLabel:'Менеджер',  status:'on',   seen:'сейчас',        color:'#10b981'},
-  {name:'Полина Климова',  email:'p.klimova@acme.ru', role:'usr', roleLabel:'Сотрудник', status:'off',  seen:'2 ч назад',     color:'#ef4444'},
-  {name:'Игорь Лебедев',   email:'i.lebedev@acme.ru', role:'usr', roleLabel:'Сотрудник', status:'off',  seen:'вчера',         color:'#a855f7'},
-  {name:'Кирилл Романов',  email:'k.romanov@acme.ru', role:'adm', roleLabel:'Админ',     status:'on',   seen:'сейчас',        color:'#0ea5e9'},
-  {name:'Юлия Васильева',  email:'y.vas@acme.ru',     role:'usr', roleLabel:'Сотрудник', status:'off',  seen:'3 дн назад',    color:'#ec4899'},
+const POSTS = [
+  {title:'Отчёт о ремонте в Тверском детском доме №3', excerpt:'Закончили ремонт игровой комнаты и спален, фотоотчёт внутри', cat:'Отчёт',     status:'pub',   date:'12.06.2026', views:1284, color:'#2563eb', mark:'Р'},
+  {title:'Сбор на новогодние подарки для подопечных',  excerpt:'Цель сбора 250 000 ₽, собрано 78 000 ₽',                       cat:'Сбор',       status:'pub',   date:'08.06.2026', views:864,  color:'#16a34a', mark:'С'},
+  {title:'Наставники нужны: открыт набор волонтёров',   excerpt:'Ищем 12 наставников для работы с детьми 10-16 лет',           cat:'Волонтёры',  status:'pub',   date:'04.06.2026', views:512,  color:'#7c3aed', mark:'В'},
+  {title:'История Миши: как у мальчика появилась семья', excerpt:'Спасибо всем, кто помогал советами и финансово',              cat:'История',    status:'pub',   date:'29.05.2026', views:2103, color:'#f59e0b', mark:'И'},
+  {title:'Закупка одежды для воспитанников интерната',   excerpt:'Передали 86 комплектов одежды, фотоотчёт от учреждения',     cat:'Отчёт',      status:'pub',   date:'22.05.2026', views:431,  color:'#2563eb', mark:'Р'},
+  {title:'Открыт сбор на медоборудование',               excerpt:'Тонометры, термометры, аптечки для двух детских домов',      cat:'Сбор',       status:'sched', date:'25.06.2026', views:0,    color:'#16a34a', mark:'С'},
+  {title:'Черновик: благодарственное письмо донорам',    excerpt:'Доработать список подопечных и приложить фотографии',        cat:'Письмо',     status:'draft', date:'—',          views:0,    color:'#64748b', mark:'Ч'},
+  {title:'Праздник для детей в День защиты детей',       excerpt:'Прошёл праздник в трёх учреждениях, посетили 240 детей',     cat:'Событие',    status:'pub',   date:'02.06.2026', views:1729, color:'#ec4899', mark:'П'},
 ]
 
-const initials = n => n.split(' ').map(p => p[0]).slice(0,2).join('')
-const statusInfo = { on:['Онлайн','on'], away:['Отошёл','away'], off:['Не в сети','off'] }
+const statusInfo = { pub:['Опубликовано','pub'], draft:['Черновик','draft'], sched:['Запланировано','sched'] }
+let activeFilter = 'all'
+let searchQuery = ''
 
-function render(list){
-  const html = list.map(u => {
-    const [lbl, cls] = statusInfo[u.status]
+function visible(){
+  return POSTS.filter(p => {
+    if (activeFilter !== 'all' && p.status !== activeFilter) return false
+    if (searchQuery && !(p.title.toLowerCase().includes(searchQuery) || p.excerpt.toLowerCase().includes(searchQuery))) return false
+    return true
+  })
+}
+
+function render(){
+  const list = visible()
+  if (!list.length) {
+    document.querySelector('#news tbody').innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--mut);padding:32px">Ничего не нашлось</td></tr>`
+    return
+  }
+  const html = list.map(p => {
+    const [lbl, cls] = statusInfo[p.status]
     return `<tr>
-      <td><div class="u"><div class="ava" style="background:${u.color}">${initials(u.name)}</div><div><b>${u.name}</b><small>${u.email}</small></div></div></td>
-      <td><span class="role ${u.role}">${u.roleLabel}</span></td>
-      <td><span class="status"><span class="dot ${cls}"></span>${lbl}</span></td>
-      <td style="color:var(--mut)">${u.seen}</td>
+      <td><div class="np"><div class="thumb" style="background:linear-gradient(135deg,${p.color},${shade(p.color,-20)})">${p.mark}</div><div style="min-width:0"><b title="${p.title}">${p.title}</b><small>${p.excerpt}</small></div></div></td>
+      <td><span class="cat">${p.cat}</span></td>
+      <td><span class="pill ${cls}">${lbl}</span></td>
+      <td style="color:var(--mut);white-space:nowrap">${p.date}</td>
+      <td><span class="views"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>${p.views.toLocaleString('ru-RU')}</span></td>
       <td><div class="act">
-        <button title="Редактировать" onclick="toast('Открыть карточку: ${u.name}')"><svg viewBox="0 0 24 24"><path d="M11 4H4v16h16v-7"/><path d="M18.5 2.5a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4z"/></svg></button>
-        <button title="Удалить" onclick="del('${u.email}')"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M5 6l1 14h12l1-14"/></svg></button>
+        <button title="Редактировать" onclick="toast('Открыть редактор: ${p.title.replace(/'/g,&quot;\\'&quot;)}')"><svg viewBox="0 0 24 24"><path d="M11 4H4v16h16v-7"/><path d="M18.5 2.5a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+        <button title="Посмотреть на сайте" onclick="toast('Открыть на сайте')"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>
+        <button class="del" title="Удалить" onclick="del(${POSTS.indexOf(p)})"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M5 6l1 14h12l1-14"/></svg></button>
       </div></td>
     </tr>`
   }).join('')
-  if (!list.length) {
-    document.querySelector('#users tbody').innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--mut);padding:32px">Никого не нашлось</td></tr>`
-    return
-  }
-  document.querySelector('#users tbody').innerHTML = html
+  document.querySelector('#news tbody').innerHTML = html
 }
-render(USERS)
+
+function shade(hex, p){
+  const n = parseInt(hex.slice(1),16)
+  const r = Math.max(0, Math.min(255, (n>>16) + p))
+  const g = Math.max(0, Math.min(255, ((n>>8)&255) + p))
+  const b = Math.max(0, Math.min(255, (n&255) + p))
+  return '#' + ((r<<16)|(g<<8)|b).toString(16).padStart(6,'0')
+}
 
 function toast(msg){
   const t = document.getElementById('toast')
@@ -248,16 +284,30 @@ function toast(msg){
   clearTimeout(window._t)
   window._t = setTimeout(() => t.classList.remove('show'), 1800)
 }
-function del(email){
-  const i = USERS.findIndex(u => u.email === email)
-  if (i > -1) { const n = USERS[i].name; USERS.splice(i,1); render(USERS); toast('✓ Удалён: ' + n) }
+function del(i){
+  if (i < 0) return
+  const n = POSTS[i].title
+  POSTS.splice(i,1)
+  render()
+  toast('✓ Удалено: ' + n)
 }
-function openNew(){ toast('Открыть форму создания пользователя') }
-document.getElementById('globalSearch').addEventListener('input', e => {
-  const q = e.target.value.toLowerCase().trim()
-  if (!q) return render(USERS)
-  render(USERS.filter(u => u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q) || u.roleLabel.toLowerCase().includes(q)))
+function openNew(){ toast('Открыть редактор новой записи') }
+
+document.getElementById('tabs').addEventListener('click', e => {
+  const btn = e.target.closest('button')
+  if (!btn) return
+  document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('on'))
+  btn.classList.add('on')
+  activeFilter = btn.dataset.f
+  render()
 })
+
+document.getElementById('globalSearch').addEventListener('input', e => {
+  searchQuery = e.target.value.toLowerCase().trim()
+  render()
+})
+
+render()
 </script>
 </body>
 </html>
