@@ -13,30 +13,33 @@
   --red:#dc2626;--red-soft:#fee2e2;
   --amber:#d97706;--amber-soft:#fef3c7;
   --purple:#7c3aed;--purple-soft:#ede9fe;
+  --pink:#ec4899;--pink-soft:#fce7f3;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{font:14px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 a{color:inherit;text-decoration:none}
-input,textarea,select{font:inherit}
+input,textarea,select{font:inherit;font-family:inherit}
 
 .app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
 
 /* sidebar */
 .side{background:#fff;border-right:1px solid var(--border);display:flex;flex-direction:column;padding:18px 12px 6px;position:sticky;top:0;height:100vh;overflow-y:auto}
-.brand{display:flex;align-items:center;gap:10px;padding:0 10px 18px}
-.brand .mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px;letter-spacing:-.5px;box-shadow:0 4px 12px -4px rgba(37,99,235,.5)}
-.brand .name{font-weight:700;font-size:14.5px;letter-spacing:-.2px;line-height:1.15}
+.brand{display:flex;align-items:center;gap:10px;padding:0 10px 18px;cursor:pointer}
+.brand .mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;letter-spacing:-.5px;box-shadow:0 4px 12px -4px rgba(37,99,235,.5);flex:none}
+.brand .name{font-weight:700;font-size:14px;letter-spacing:-.2px;line-height:1.15}
 .brand .name small{display:block;font-size:10.5px;color:var(--mut);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-top:2px}
 .lbl{font-size:10.5px;color:var(--faint);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:14px 12px 6px}
-.nav{display:flex;align-items:center;gap:10px;padding:8px 11px;border-radius:7px;font-size:13.5px;color:var(--ink-2);font-weight:500;transition:.12s}
+.nav{display:flex;align-items:center;gap:10px;padding:8px 11px;border-radius:7px;font-size:13.5px;color:var(--ink-2);font-weight:500;transition:.12s;cursor:pointer;border:none;background:none;width:100%;text-align:left}
 .nav:hover{background:var(--bg);color:var(--ink)}
 .nav.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
 .nav svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.7;fill:none;flex:none}
 .nav .badge{margin-left:auto;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:100px;background:var(--accent);color:#fff}
+.nav .badge.amber{background:var(--amber)}
 .foot{margin-top:auto;border-top:1px solid var(--border);padding:10px 2px 4px}
-.me{display:flex;align-items:center;gap:10px;padding:6px 8px 2px}
+.me{display:flex;align-items:center;gap:10px;padding:6px 8px 2px;cursor:pointer;border-radius:7px}
+.me:hover{background:var(--bg)}
 .me .ava{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;display:grid;place-items:center;font-weight:700;font-size:11.5px;flex:none}
 .me b{font-size:13px;font-weight:600;display:block;letter-spacing:-.01em}
 .me small{font-size:11.5px;color:var(--mut)}
@@ -51,14 +54,18 @@ input,textarea,select{font:inherit}
 .search input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:7px 12px 7px 32px;font-size:13px;color:var(--ink);transition:.15s}
 .search input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
 .search svg{position:absolute;left:10px;top:8.5px;width:14px;height:14px;stroke:var(--faint);stroke-width:1.8;fill:none}
-.btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px;letter-spacing:-.01em;transition:.15s;line-height:1}
+.btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px;letter-spacing:-.01em;transition:.15s;line-height:1;cursor:pointer;border:1px solid transparent}
 .btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;flex:none}
 .btn-pri{background:var(--accent);color:#fff;box-shadow:0 4px 10px -4px rgba(37,99,235,.45)}
 .btn-pri:hover{background:var(--accent-2)}
-.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--border)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--border)}
 .btn-ghost:hover{border-color:var(--border-strong)}
+.btn-danger{background:#fff;color:var(--red);border-color:var(--red-soft)}
+.btn-danger:hover{background:var(--red-soft)}
 
 .content{padding:22px 24px 56px;display:flex;flex-direction:column;gap:18px}
+.page{display:none;flex-direction:column;gap:18px}
+.page.active{display:flex}
 .head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .head h1{font-size:23px;font-weight:700;letter-spacing:-.03em}
 .head .sub{font-size:13px;color:var(--mut);margin-top:3px}
@@ -73,11 +80,10 @@ input,textarea,select{font:inherit}
 .stat .val{font-size:22px;font-weight:700;letter-spacing:-.02em;font-feature-settings:'tnum' 1}
 .stat .delta{display:inline-flex;align-items:center;gap:2px;font-size:11.5px;font-weight:600;padding:2px 7px;border-radius:100px;margin-left:6px;vertical-align:middle}
 .stat .delta.up{color:var(--green);background:var(--green-soft)}
-.stat .delta.down{color:var(--red);background:var(--red-soft)}
 
 /* tabs */
 .tabs{display:flex;gap:2px;background:var(--bg);padding:3px;border-radius:9px;width:fit-content;border:1px solid var(--border)}
-.tabs button{font-size:12.5px;font-weight:500;color:var(--mut);padding:6px 12px;border-radius:6px;transition:.12s}
+.tabs button{font-size:12.5px;font-weight:500;color:var(--mut);padding:6px 12px;border-radius:6px;transition:.12s;cursor:pointer}
 .tabs button.on{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(15,23,42,.06)}
 .tabs button:hover:not(.on){color:var(--ink)}
 
@@ -89,27 +95,68 @@ input,textarea,select{font:inherit}
 .filter:hover{border-color:var(--border-strong)}
 .filter svg{width:11px;height:11px;stroke:currentColor;stroke-width:2;fill:none}
 
-table.news{width:100%;border-collapse:collapse;font-size:13px}
-table.news th{text-align:left;font-weight:600;font-size:11px;color:var(--mut);letter-spacing:.05em;text-transform:uppercase;padding:11px 18px;background:var(--bg);border-bottom:1px solid var(--border)}
-table.news td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle}
-table.news tr:last-child td{border-bottom:none}
-table.news tr:hover td{background:#fafbfc}
+table.tbl{width:100%;border-collapse:collapse;font-size:13px}
+table.tbl th{text-align:left;font-weight:600;font-size:11px;color:var(--mut);letter-spacing:.05em;text-transform:uppercase;padding:11px 18px;background:var(--bg);border-bottom:1px solid var(--border)}
+table.tbl td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle}
+table.tbl tr:last-child td{border-bottom:none}
+table.tbl tr:hover td{background:#fafbfc}
 .np{display:flex;align-items:center;gap:12px;max-width:480px}
-.np .thumb{width:54px;height:40px;border-radius:7px;flex:none;background-position:center;background-size:cover;background-color:#e2e8f0;font-size:18px;display:grid;place-items:center;color:#fff;letter-spacing:-.5px}
+.np .thumb{width:54px;height:40px;border-radius:7px;flex:none;background-position:center;background-size:cover;background-color:#e2e8f0;font-size:16px;display:grid;place-items:center;color:#fff;letter-spacing:-.5px;font-weight:700}
 .np b{font-weight:600;font-size:13.5px;letter-spacing:-.01em;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .np small{display:block;font-size:11.5px;color:var(--mut);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pill{font-size:11px;font-weight:600;padding:2px 8px;border-radius:100px;display:inline-block;letter-spacing:.02em}
-.pill.pub{color:var(--green);background:var(--green-soft)}
-.pill.draft{color:var(--mut);background:#e2e8f0}
-.pill.sched{color:var(--accent);background:var(--accent-soft)}
+.pill.pub,.pill.ok,.pill.paid,.pill.done{color:var(--green);background:var(--green-soft)}
+.pill.draft,.pill.archived{color:var(--mut);background:#e2e8f0}
+.pill.sched,.pill.new{color:var(--accent);background:var(--accent-soft)}
+.pill.pending,.pill.review{color:var(--amber);background:var(--amber-soft)}
+.pill.urgent,.pill.fail{color:var(--red);background:var(--red-soft)}
 .cat{font-size:11.5px;color:var(--ink-2);padding:3px 8px;border-radius:6px;background:var(--bg);display:inline-block}
 .views{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--mut);font-feature-settings:'tnum' 1}
 .views svg{width:13px;height:13px;stroke:currentColor;stroke-width:1.8;fill:none}
 .act{display:inline-flex;gap:4px}
-.act button{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;color:var(--mut);transition:.12s}
+.act button{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;color:var(--mut);transition:.12s;cursor:pointer}
 .act button:hover{background:var(--bg);color:var(--ink)}
 .act button.del:hover{color:var(--red);background:var(--red-soft)}
 .act svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* progress */
+.prog{display:flex;flex-direction:column;gap:5px;min-width:160px}
+.prog-bar{height:6px;background:var(--bg);border-radius:100px;overflow:hidden}
+.prog-fill{height:100%;background:var(--accent);border-radius:100px;transition:.4s}
+.prog-meta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);font-feature-settings:'tnum' 1}
+.prog-meta b{color:var(--ink);font-weight:600}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.gal-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:.15s}
+.gal-card:hover{border-color:var(--border-strong);transform:translateY(-1px);box-shadow:0 8px 24px -8px rgba(15,23,42,.08)}
+.gal-cover{height:130px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:24px;letter-spacing:-1px}
+.gal-body{padding:12px 14px}
+.gal-body b{font-size:13.5px;font-weight:600;display:block}
+.gal-body small{font-size:11.5px;color:var(--mut);display:block;margin-top:3px}
+
+/* settings form */
+.form{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:760px){.form{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-size:12px;font-weight:600;color:var(--ink-2);letter-spacing:.01em}
+.fld input,.fld textarea,.fld select{background:#fff;border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:13px;color:var(--ink);transition:.12s}
+.fld input:focus,.fld textarea:focus,.fld select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.fld textarea{resize:vertical;min-height:80px;font-family:inherit}
+.fld small{font-size:11.5px;color:var(--mut)}
+
+/* side panel */
+.panel-overlay{position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:90;opacity:0;pointer-events:none;transition:.18s}
+.panel-overlay.open{opacity:1;pointer-events:auto}
+.panel{position:fixed;top:0;right:0;width:min(440px,92vw);height:100vh;background:#fff;border-left:1px solid var(--border);z-index:91;transform:translateX(100%);transition:.22s;display:flex;flex-direction:column;box-shadow:-10px 0 30px -10px rgba(15,23,42,.15)}
+.panel.open{transform:translateX(0)}
+.panel-head{display:flex;align-items:center;gap:10px;padding:18px 22px 14px;border-bottom:1px solid var(--border)}
+.panel-head h2{font-size:15px;font-weight:700;letter-spacing:-.02em;margin-right:auto}
+.panel-close{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;color:var(--mut);cursor:pointer}
+.panel-close:hover{background:var(--bg);color:var(--ink)}
+.panel-close svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
+.panel-body{flex:1;overflow-y:auto;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.panel-foot{border-top:1px solid var(--border);padding:14px 22px;display:flex;justify-content:flex-end;gap:8px}
 
 /* toast */
 .toast{position:fixed;bottom:24px;right:24px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:9px;font-size:13px;font-weight:500;opacity:0;transform:translateY(8px);pointer-events:none;transition:.22s;z-index:100;box-shadow:0 10px 30px -8px rgba(0,0,0,.3)}
@@ -119,37 +166,53 @@ table.news tr:hover td{background:#fafbfc}
   .app{grid-template-columns:1fr}
   .side{display:none}
   .content{padding:18px}
-  table.news th:nth-child(3),table.news td:nth-child(3),
-  table.news th:nth-child(5),table.news td:nth-child(5){display:none}
+  table.tbl th:nth-child(n+4),table.tbl td:nth-child(n+4){display:none}
+  table.tbl th:last-child,table.tbl td:last-child{display:table-cell}
 }
 </style>
 </head>
 <body>
+
+<!-- ── Side panel + overlay (before script so getElementById resolves) ── -->
+<div class="panel-overlay" id="panelOverlay"></div>
+<aside class="panel" id="panel" role="dialog" aria-modal="true">
+  <div class="panel-head">
+    <h2 id="panelTitle">Заголовок</h2>
+    <button class="panel-close" id="panelClose" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="panel-body" id="panelBody"></div>
+  <div class="panel-foot" id="panelFoot"></div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
 <div class="app">
   <aside class="side">
-    <div class="brand">
+    <div class="brand" data-go="dashboard">
       <div class="mark">3В</div>
       <div class="name">Давай делать<small>добро вместе</small></div>
     </div>
 
     <div class="lbl">Контент</div>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Дашборд</a>
-    <a class="nav on" href="#"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M8 4v5"/></svg>Новости<span class="badge">24</span></a>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M21 11c0 5-9 11-9 11s-9-6-9-11a9 9 0 0 1 18 0z"/><circle cx="12" cy="11" r="3"/></svg>Проекты помощи<span class="badge">6</span></a>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M3 21V11l9-7 9 7v10"/><path d="M9 21v-7h6v7"/></svg>Учреждения</a>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 17 5-5 4 4 5-5 4 4"/></svg>Галерея</a>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Отчёты</a>
+    <button class="nav" data-go="dashboard"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Дашборд</button>
+    <button class="nav on" data-go="news"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M8 4v5"/></svg>Новости<span class="badge">24</span></button>
+    <button class="nav" data-go="projects"><svg viewBox="0 0 24 24"><path d="M21 11c0 5-9 11-9 11s-9-6-9-11a9 9 0 0 1 18 0z"/><circle cx="12" cy="11" r="3"/></svg>Проекты помощи<span class="badge">6</span></button>
+    <button class="nav" data-go="orgs"><svg viewBox="0 0 24 24"><path d="M3 21V11l9-7 9 7v10"/><path d="M9 21v-7h6v7"/></svg>Учреждения</button>
+    <button class="nav" data-go="gallery"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 17 5-5 4 4 5-5 4 4"/></svg>Галерея</button>
+    <button class="nav" data-go="reports"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>Отчёты</button>
 
     <div class="lbl">Заявки</div>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M22 11.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10"/><path d="m2 6 10 7 10-7"/></svg>Входящие<span class="badge" style="background:var(--amber)">5</span></a>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Пожертвования</a>
+    <button class="nav" data-go="inbox"><svg viewBox="0 0 24 24"><path d="M22 11.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10"/><path d="m2 6 10 7 10-7"/></svg>Входящие<span class="badge amber">5</span></button>
+    <button class="nav" data-go="donations"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Пожертвования</button>
 
     <div class="lbl">Сайт</div>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><path d="M4 4h16v6H4zM4 14h16v6H4z"/></svg>Страницы</a>
-    <a class="nav" href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a7 7 0 0 0-1.7-1L16.5 2h-4l-.3 2.6a7 7 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7 7 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 1.7 1l.3 2.6h4l.3-2.6a7 7 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6a7 7 0 0 0 .1-1z"/></svg>Настройки</a>
+    <button class="nav" data-go="pages"><svg viewBox="0 0 24 24"><path d="M4 4h16v6H4zM4 14h16v6H4z"/></svg>Страницы</button>
+    <button class="nav" data-go="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a7 7 0 0 0-1.7-1L16.5 2h-4l-.3 2.6a7 7 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7 7 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 1.7 1l.3 2.6h4l.3-2.6a7 7 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6a7 7 0 0 0 .1-1z"/></svg>Настройки</button>
 
     <div class="foot">
-      <div class="me">
+      <div class="me" data-go="profile">
         <div class="ava">БР</div>
         <div><b>Бр_Им</b><small>Редактор</small></div>
       </div>
@@ -158,156 +221,758 @@ table.news tr:hover td{background:#fafbfc}
 
   <div class="main">
     <header class="top">
-      <div class="crumb">Админ<span class="sep">/</span><b>Новости</b></div>
+      <div class="crumb">Админ<span class="sep">/</span><b id="crumbPage">Новости</b></div>
       <div class="search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-5-5"/></svg>
-        <input id="globalSearch" placeholder="Поиск по заголовку и описанию">
+        <input id="globalSearch" placeholder="Поиск...">
       </div>
-      <button class="btn btn-ghost" onclick="toast('Просмотр сайта откроется в новой вкладке')"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Открыть сайт</button>
-      <button class="btn btn-pri" onclick="openNew()"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Новая запись</button>
+      <button class="btn btn-ghost" id="topbarPeriod"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>За 7 дней</button>
+      <button class="btn btn-pri" id="topbarCta"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span id="topbarCtaLbl">Новая запись</span></button>
     </header>
 
     <div class="content">
-      <div class="head">
-        <div>
-          <h1>Новости</h1>
-          <div class="sub">Управление публикациями на сайте фонда</div>
-        </div>
-      </div>
 
-      <div class="stats">
-        <div class="stat">
-          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M8 4v5"/></svg></span>Опубликовано</div>
-          <div class="val">24<span class="delta up">+4</span></div>
+      <!-- ── DASHBOARD ── -->
+      <section class="page" data-page="dashboard">
+        <div class="head"><div><h1>Дашборд</h1><div class="sub">Сводка по работе фонда</div></div></div>
+        <div class="stats">
+          <div class="stat"><div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M8 4v5"/></svg></span>Записей опубликовано</div><div class="val">24<span class="delta up">+4</span></div></div>
+          <div class="stat"><div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M21 11c0 5-9 11-9 11s-9-6-9-11a9 9 0 0 1 18 0z"/></svg></span>Активных сборов</div><div class="val">6</div></div>
+          <div class="stat"><div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67"/></svg></span>Собрано за месяц</div><div class="val">₽ 312&nbsp;500<span class="delta up">+18%</span></div></div>
+          <div class="stat"><div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M22 11.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10"/><path d="m2 6 10 7 10-7"/></svg></span>Открытых заявок</div><div class="val">5</div></div>
         </div>
-        <div class="stat">
-          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M21 11c0 5-9 11-9 11s-9-6-9-11a9 9 0 0 1 18 0z"/></svg></span>Активных сборов</div>
-          <div class="val">6</div>
+        <div class="card">
+          <div class="card-head"><h3>Последние новости</h3><button class="btn btn-ghost" data-go="news" style="font-size:12.5px;padding:6px 10px">Все →</button></div>
+          <table class="tbl"><tbody id="dashRecent"></tbody></table>
         </div>
-        <div class="stat">
-          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>Собрано за месяц</div>
-          <div class="val">₽ 312&nbsp;500<span class="delta up">+18%</span></div>
-        </div>
-        <div class="stat">
-          <div class="lbl-s"><span class="ico"><svg viewBox="0 0 24 24"><path d="M22 11.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10"/><path d="m2 6 10 7 10-7"/></svg></span>Открытых заявок</div>
-          <div class="val">5</div>
-        </div>
-      </div>
+      </section>
 
-      <div class="tabs" id="tabs">
-        <button class="on" data-f="all">Все <span style="opacity:.55">28</span></button>
-        <button data-f="pub">Опубликованные <span style="opacity:.55">24</span></button>
-        <button data-f="draft">Черновики <span style="opacity:.55">3</span></button>
-        <button data-f="sched">Запланированные <span style="opacity:.55">1</span></button>
-      </div>
-
-      <div class="card">
-        <div class="card-head">
-          <h3>Записи</h3>
-          <button class="filter" onclick="toast('Фильтр по категории')">Категория<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <button class="filter" onclick="toast('Фильтр по дате')">За всё время<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <button class="btn btn-ghost" onclick="toast('Экспорт CSV')" style="font-size:12.5px;padding:6px 10px"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Экспорт</button>
+      <!-- ── NEWS ── -->
+      <section class="page active" data-page="news">
+        <div class="head"><div><h1>Новости</h1><div class="sub">Управление публикациями на сайте фонда</div></div></div>
+        <div class="tabs" id="newsTabs">
+          <button class="on" data-f="all">Все</button>
+          <button data-f="pub">Опубликованные</button>
+          <button data-f="draft">Черновики</button>
+          <button data-f="sched">Запланированные</button>
         </div>
-        <table class="news" id="news">
-          <thead>
-            <tr><th>Запись</th><th>Категория</th><th>Статус</th><th>Дата</th><th>Просмотры</th><th></th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
+        <div class="card">
+          <div class="card-head">
+            <h3>Записи</h3>
+            <button class="filter" data-act="filter-cat">Категория<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <button class="filter" data-act="filter-date">За всё время<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <button class="btn btn-ghost" data-act="export-news" style="font-size:12.5px;padding:6px 10px"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Экспорт</button>
+          </div>
+          <table class="tbl" id="newsTable">
+            <thead><tr><th>Запись</th><th>Категория</th><th>Статус</th><th>Дата</th><th>Просмотры</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── PROJECTS ── -->
+      <section class="page" data-page="projects">
+        <div class="head"><div><h1>Проекты помощи</h1><div class="sub">Активные сборы и завершённые кампании</div></div></div>
+        <div class="card">
+          <div class="card-head"><h3>Все проекты</h3>
+            <button class="btn btn-ghost" data-act="export-projects" style="font-size:12.5px;padding:6px 10px"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Экспорт</button>
+          </div>
+          <table class="tbl" id="projTable">
+            <thead><tr><th>Проект</th><th>Учреждение</th><th>Статус</th><th>Прогресс</th><th>Дедлайн</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── ORGS ── -->
+      <section class="page" data-page="orgs">
+        <div class="head"><div><h1>Учреждения</h1><div class="sub">Детские дома и интернаты, с которыми работает фонд</div></div></div>
+        <div class="card">
+          <div class="card-head"><h3>Список учреждений</h3></div>
+          <table class="tbl" id="orgsTable">
+            <thead><tr><th>Учреждение</th><th>Город</th><th>Контакт</th><th>Проектов</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── GALLERY ── -->
+      <section class="page" data-page="gallery">
+        <div class="head"><div><h1>Галерея</h1><div class="sub">Фотоальбомы с мероприятий и поездок</div></div></div>
+        <div class="gallery" id="galleryGrid"></div>
+      </section>
+
+      <!-- ── REPORTS ── -->
+      <section class="page" data-page="reports">
+        <div class="head"><div><h1>Отчёты</h1><div class="sub">Финансовые и проектные отчёты</div></div></div>
+        <div class="card">
+          <div class="card-head"><h3>Файлы</h3></div>
+          <table class="tbl" id="reportsTable">
+            <thead><tr><th>Документ</th><th>Период</th><th>Размер</th><th>Загружен</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── INBOX ── -->
+      <section class="page" data-page="inbox">
+        <div class="head"><div><h1>Входящие заявки</h1><div class="sub">Запросы на помощь от учреждений и подопечных</div></div></div>
+        <div class="tabs" id="inboxTabs">
+          <button class="on" data-f="all">Все</button>
+          <button data-f="new">Новые</button>
+          <button data-f="review">В работе</button>
+          <button data-f="done">Закрытые</button>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Заявки</h3></div>
+          <table class="tbl" id="inboxTable">
+            <thead><tr><th>Заявитель</th><th>Тема</th><th>Статус</th><th>Дата</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── DONATIONS ── -->
+      <section class="page" data-page="donations">
+        <div class="head"><div><h1>Пожертвования</h1><div class="sub">История поступлений</div></div></div>
+        <div class="stats">
+          <div class="stat"><div class="lbl-s">Всего за месяц</div><div class="val">₽ 312&nbsp;500</div></div>
+          <div class="stat"><div class="lbl-s">Транзакций</div><div class="val">87</div></div>
+          <div class="stat"><div class="lbl-s">Средний чек</div><div class="val">₽ 3&nbsp;590</div></div>
+          <div class="stat"><div class="lbl-s">Повторных доноров</div><div class="val">34</div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Транзакции</h3>
+            <button class="btn btn-ghost" data-act="export-donations" style="font-size:12.5px;padding:6px 10px"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Экспорт</button>
+          </div>
+          <table class="tbl" id="donTable">
+            <thead><tr><th>Донор</th><th>Сумма</th><th>Проект</th><th>Статус</th><th>Дата</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── PAGES ── -->
+      <section class="page" data-page="pages">
+        <div class="head"><div><h1>Страницы сайта</h1><div class="sub">Статичные разделы сайта фонда</div></div></div>
+        <div class="card">
+          <div class="card-head"><h3>Все страницы</h3></div>
+          <table class="tbl" id="pagesTable">
+            <thead><tr><th>Страница</th><th>URL</th><th>Статус</th><th>Обновлена</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── SETTINGS ── -->
+      <section class="page" data-page="settings">
+        <div class="head"><div><h1>Настройки сайта</h1><div class="sub">Контакты, реквизиты и оформление</div></div></div>
+        <div class="card" style="padding:20px">
+          <div class="form">
+            <div class="fld"><label>Название фонда</label><input id="setName" value="Давай делать добро вместе"></div>
+            <div class="fld"><label>Контактный e-mail</label><input id="setEmail" value="info@3dv.ru"></div>
+            <div class="fld"><label>Телефон</label><input id="setPhone" value="+7 (4822) 50-50-50"></div>
+            <div class="fld"><label>Город</label><input id="setCity" value="Тверь"></div>
+            <div class="fld" style="grid-column:1/-1"><label>Описание для футера</label><textarea id="setDesc">Помогаем детским учреждениям Тверской области с 2018 года.</textarea></div>
+            <div class="fld"><label>ВКонтакте</label><input id="setVk" value="https://vk.com/3dv_fond"></div>
+            <div class="fld"><label>Telegram</label><input id="setTg" value="https://t.me/3dv_fond"></div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid var(--border)">
+            <button class="btn btn-ghost" data-act="settings-reset">Сбросить</button>
+            <button class="btn btn-pri" data-act="settings-save">Сохранить</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── PROFILE ── -->
+      <section class="page" data-page="profile">
+        <div class="head"><div><h1>Профиль</h1><div class="sub">Аккаунт редактора</div></div></div>
+        <div class="card" style="padding:20px">
+          <div class="form">
+            <div class="fld"><label>Имя</label><input id="profName" value="Бр_Им"></div>
+            <div class="fld"><label>E-mail</label><input id="profEmail" value="editor@3dv.ru"></div>
+            <div class="fld"><label>Роль</label><select id="profRole"><option>Редактор</option><option>Админ</option><option>Контент-менеджер</option></select></div>
+            <div class="fld"><label>Часовой пояс</label><select id="profTz"><option>МСК (UTC+3)</option><option>UTC</option></select></div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid var(--border)">
+            <button class="btn btn-danger" data-act="logout">Выйти</button>
+            <button class="btn btn-pri" data-act="profile-save">Сохранить</button>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
-
 <script>
+// ──────────────── DATA ────────────────
 const POSTS = [
-  {title:'Отчёт о ремонте в Тверском детском доме №3', excerpt:'Закончили ремонт игровой комнаты и спален, фотоотчёт внутри', cat:'Отчёт',     status:'pub',   date:'12.06.2026', views:1284, color:'#2563eb', mark:'Р'},
-  {title:'Сбор на новогодние подарки для подопечных',  excerpt:'Цель сбора 250 000 ₽, собрано 78 000 ₽',                       cat:'Сбор',       status:'pub',   date:'08.06.2026', views:864,  color:'#16a34a', mark:'С'},
-  {title:'Наставники нужны: открыт набор волонтёров',   excerpt:'Ищем 12 наставников для работы с детьми 10-16 лет',           cat:'Волонтёры',  status:'pub',   date:'04.06.2026', views:512,  color:'#7c3aed', mark:'В'},
-  {title:'История Миши: как у мальчика появилась семья', excerpt:'Спасибо всем, кто помогал советами и финансово',              cat:'История',    status:'pub',   date:'29.05.2026', views:2103, color:'#f59e0b', mark:'И'},
-  {title:'Закупка одежды для воспитанников интерната',   excerpt:'Передали 86 комплектов одежды, фотоотчёт от учреждения',     cat:'Отчёт',      status:'pub',   date:'22.05.2026', views:431,  color:'#2563eb', mark:'Р'},
-  {title:'Открыт сбор на медоборудование',               excerpt:'Тонометры, термометры, аптечки для двух детских домов',      cat:'Сбор',       status:'sched', date:'25.06.2026', views:0,    color:'#16a34a', mark:'С'},
-  {title:'Черновик: благодарственное письмо донорам',    excerpt:'Доработать список подопечных и приложить фотографии',        cat:'Письмо',     status:'draft', date:'—',          views:0,    color:'#64748b', mark:'Ч'},
-  {title:'Праздник для детей в День защиты детей',       excerpt:'Прошёл праздник в трёх учреждениях, посетили 240 детей',     cat:'Событие',    status:'pub',   date:'02.06.2026', views:1729, color:'#ec4899', mark:'П'},
+  {id:1,title:'Отчёт о ремонте в Тверском детском доме №3', excerpt:'Закончили ремонт игровой комнаты и спален', cat:'Отчёт',    status:'pub',   date:'12.06.2026', views:1284, color:'#2563eb', mark:'Р'},
+  {id:2,title:'Сбор на новогодние подарки для подопечных',  excerpt:'Цель сбора 250 000 ₽, собрано 78 000 ₽',     cat:'Сбор',     status:'pub',   date:'08.06.2026', views:864,  color:'#16a34a', mark:'С'},
+  {id:3,title:'Наставники нужны: открыт набор волонтёров',  excerpt:'Ищем 12 наставников для работы с детьми',    cat:'Волонтёры',status:'pub',   date:'04.06.2026', views:512,  color:'#7c3aed', mark:'В'},
+  {id:4,title:'История Миши: как у мальчика появилась семья',excerpt:'Спасибо всем, кто помогал',                  cat:'История',  status:'pub',   date:'29.05.2026', views:2103, color:'#f59e0b', mark:'И'},
+  {id:5,title:'Закупка одежды для воспитанников интерната', excerpt:'Передали 86 комплектов одежды',              cat:'Отчёт',    status:'pub',   date:'22.05.2026', views:431,  color:'#2563eb', mark:'Р'},
+  {id:6,title:'Открыт сбор на медоборудование',             excerpt:'Тонометры, термометры, аптечки',             cat:'Сбор',     status:'sched', date:'25.06.2026', views:0,    color:'#16a34a', mark:'С'},
+  {id:7,title:'Черновик: благодарственное письмо донорам',  excerpt:'Доработать список подопечных',               cat:'Письмо',   status:'draft', date:'—',          views:0,    color:'#64748b', mark:'Ч'},
+  {id:8,title:'Праздник для детей в День защиты детей',     excerpt:'Прошёл праздник в трёх учреждениях',         cat:'Событие',  status:'pub',   date:'02.06.2026', views:1729, color:'#ec4899', mark:'П'},
 ]
 
-const statusInfo = { pub:['Опубликовано','pub'], draft:['Черновик','draft'], sched:['Запланировано','sched'] }
-let activeFilter = 'all'
-let searchQuery = ''
+const PROJECTS = [
+  {id:1,name:'Ремонт спортзала',          org:'Тверской ДД №3',     status:'pub',     target:480000, raised:312000, deadline:'15.07.2026'},
+  {id:2,name:'Новогодние подарки',         org:'Все подопечные',     status:'pub',     target:250000, raised:78000,  deadline:'20.12.2026'},
+  {id:3,name:'Медоборудование',            org:'Бежецкий интернат',  status:'sched',   target:180000, raised:0,      deadline:'01.08.2026'},
+  {id:4,name:'Школьные принадлежности',    org:'Кашинский ДД',       status:'pub',     target:120000, raised:120000, deadline:'25.08.2026'},
+  {id:5,name:'Психолог для подростков',    org:'Тверская обл.',      status:'pub',     target:360000, raised:144000, deadline:'30.09.2026'},
+  {id:6,name:'Поездка на море',            org:'Старицкий ДД',       status:'draft',   target:540000, raised:0,      deadline:'—'},
+]
 
-function visible(){
-  return POSTS.filter(p => {
-    if (activeFilter !== 'all' && p.status !== activeFilter) return false
-    if (searchQuery && !(p.title.toLowerCase().includes(searchQuery) || p.excerpt.toLowerCase().includes(searchQuery))) return false
-    return true
-  })
-}
+const ORGS = [
+  {id:1,name:'Тверской детский дом №3',      city:'Тверь',     contact:'Лариса Петрова',  phone:'+7 (4822) 33-44-55', projects:8},
+  {id:2,name:'Бежецкий интернат',             city:'Бежецк',    contact:'Сергей Климов',   phone:'+7 (48231) 2-11-22', projects:3},
+  {id:3,name:'Кашинский детский дом',         city:'Кашин',     contact:'Наталья Орлова',  phone:'+7 (48234) 5-44-33', projects:5},
+  {id:4,name:'Старицкий детский дом',         city:'Старица',   contact:'Игорь Васильев',  phone:'+7 (48263) 2-50-50', projects:2},
+  {id:5,name:'Центр сопровождения семей',     city:'Тверь',     contact:'Анна Морозова',   phone:'+7 (4822) 60-12-12', projects:4},
+]
 
-function render(){
-  const list = visible()
-  if (!list.length) {
-    document.querySelector('#news tbody').innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--mut);padding:32px">Ничего не нашлось</td></tr>`
-    return
-  }
-  const html = list.map(p => {
-    const [lbl, cls] = statusInfo[p.status]
-    return `<tr>
-      <td><div class="np"><div class="thumb" style="background:linear-gradient(135deg,${p.color},${shade(p.color,-20)})">${p.mark}</div><div style="min-width:0"><b title="${p.title}">${p.title}</b><small>${p.excerpt}</small></div></div></td>
-      <td><span class="cat">${p.cat}</span></td>
-      <td><span class="pill ${cls}">${lbl}</span></td>
-      <td style="color:var(--mut);white-space:nowrap">${p.date}</td>
-      <td><span class="views"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>${p.views.toLocaleString('ru-RU')}</span></td>
-      <td><div class="act">
-        <button title="Редактировать" onclick="toast('Открыть редактор записи')"><svg viewBox="0 0 24 24"><path d="M11 4H4v16h16v-7"/><path d="M18.5 2.5a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4z"/></svg></button>
-        <button title="Посмотреть на сайте" onclick="toast('Открыть на сайте')"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>
-        <button class="del" title="Удалить" onclick="del(${POSTS.indexOf(p)})"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M5 6l1 14h12l1-14"/></svg></button>
-      </div></td>
-    </tr>`
-  }).join('')
-  document.querySelector('#news tbody').innerHTML = html
-}
+const ALBUMS = [
+  {id:1,name:'Праздник 1 июня',     date:'02.06.2026', count:34, color:'#2563eb'},
+  {id:2,name:'Ремонт ДД №3',         date:'12.06.2026', count:52, color:'#16a34a'},
+  {id:3,name:'Поездка в Кашин',     date:'18.05.2026', count:28, color:'#f59e0b'},
+  {id:4,name:'Подарки к НГ 2025',    date:'27.12.2025', count:81, color:'#ec4899'},
+  {id:5,name:'Сбор канцелярии',     date:'15.08.2025', count:19, color:'#7c3aed'},
+  {id:6,name:'Волонтёрский день',   date:'10.04.2026', count:46, color:'#0891b2'},
+]
 
-function shade(hex, p){
+const REPORTS = [
+  {id:1,name:'Финансовый отчёт за 2025',     period:'Год 2025',   size:'2.4 МБ', uploaded:'15.02.2026'},
+  {id:2,name:'Отчёт о деятельности Q1 2026', period:'Q1 2026',    size:'1.1 МБ', uploaded:'10.04.2026'},
+  {id:3,name:'Аудиторское заключение 2025',  period:'Год 2025',   size:'3.8 МБ', uploaded:'20.03.2026'},
+  {id:4,name:'Программа на 2026 год',        period:'План 2026',  size:'820 КБ', uploaded:'05.01.2026'},
+]
+
+const INBOX = [
+  {id:1,from:'Тверской ДД №3',     subj:'Срочно нужна стиральная машина',     status:'new',    date:'18.06.2026'},
+  {id:2,from:'Мария Иванова',       subj:'Хочу стать наставником',            status:'new',    date:'17.06.2026'},
+  {id:3,from:'Бежецкий интернат',   subj:'Запрос на закупку учебников',       status:'review', date:'15.06.2026'},
+  {id:4,from:'ИП Романов',           subj:'Предложение партнёрства',          status:'review', date:'14.06.2026'},
+  {id:5,from:'Анна Орлова',         subj:'Документы для регулярного донора',  status:'new',    date:'13.06.2026'},
+  {id:6,from:'Кашинский ДД',         subj:'Благодарность за помощь',          status:'done',   date:'08.06.2026'},
+  {id:7,from:'Светлана Гусева',     subj:'Вопрос про отчётность',             status:'done',   date:'02.06.2026'},
+]
+
+const DONATIONS = [
+  {donor:'Анна О.',          amount:5000,  project:'Ремонт спортзала',       status:'paid',    date:'18.06.2026'},
+  {donor:'Дмитрий С.',       amount:1500,  project:'Новогодние подарки',     status:'paid',    date:'18.06.2026'},
+  {donor:'Аноним',           amount:25000, project:'Психолог для подростков',status:'paid',    date:'17.06.2026'},
+  {donor:'ООО «Восход»',     amount:50000, project:'Ремонт спортзала',       status:'paid',    date:'16.06.2026'},
+  {donor:'Мария И.',          amount:500,   project:'Школьные принадлежности',status:'paid',    date:'15.06.2026'},
+  {donor:'Олег Г.',           amount:3000,  project:'Новогодние подарки',     status:'pending', date:'14.06.2026'},
+  {donor:'Полина К.',         amount:10000, project:'Ремонт спортзала',       status:'paid',    date:'12.06.2026'},
+  {donor:'Аноним',           amount:200,   project:'Психолог для подростков',status:'fail',    date:'11.06.2026'},
+]
+
+const PAGES = [
+  {name:'Главная',          url:'/',           status:'pub', upd:'02.06.2026'},
+  {name:'О фонде',          url:'/about',      status:'pub', upd:'15.05.2026'},
+  {name:'Как помочь',       url:'/help',       status:'pub', upd:'22.04.2026'},
+  {name:'Команда',          url:'/team',       status:'pub', upd:'18.05.2026'},
+  {name:'Контакты',         url:'/contacts',   status:'pub', upd:'10.06.2026'},
+  {name:'Реквизиты',        url:'/requisites', status:'pub', upd:'12.02.2026'},
+  {name:'Программа 2026',   url:'/program',    status:'draft',upd:'09.06.2026'},
+]
+
+// ──────────────── HELPERS ────────────────
+const $ = s => document.querySelector(s)
+const $$ = s => Array.from(document.querySelectorAll(s))
+const fmt = n => n.toLocaleString('ru-RU')
+const shade = (hex, p) => {
   const n = parseInt(hex.slice(1),16)
   const r = Math.max(0, Math.min(255, (n>>16) + p))
   const g = Math.max(0, Math.min(255, ((n>>8)&255) + p))
   const b = Math.max(0, Math.min(255, (n&255) + p))
   return '#' + ((r<<16)|(g<<8)|b).toString(16).padStart(6,'0')
 }
+const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c])
 
 function toast(msg){
-  const t = document.getElementById('toast')
+  const t = $('#toast')
   t.textContent = msg
   t.classList.add('show')
-  clearTimeout(window._t)
-  window._t = setTimeout(() => t.classList.remove('show'), 1800)
+  clearTimeout(window._tt)
+  window._tt = setTimeout(() => t.classList.remove('show'), 1800)
 }
-function del(i){
-  if (i < 0) return
+
+// ──────────────── PANEL ────────────────
+function openPanel(title, body, footHtml){
+  $('#panelTitle').textContent = title
+  $('#panelBody').innerHTML = body
+  $('#panelFoot').innerHTML = footHtml || `<button class="btn btn-ghost" data-act="panel-close">Закрыть</button>`
+  $('#panel').classList.add('open')
+  $('#panelOverlay').classList.add('open')
+}
+function closePanel(){
+  $('#panel').classList.remove('open')
+  $('#panelOverlay').classList.remove('open')
+}
+$('#panelOverlay').addEventListener('click', closePanel)
+$('#panelClose').addEventListener('click', closePanel)
+
+// ──────────────── ROUTING ────────────────
+const PAGE_TITLE = {
+  dashboard:'Дашборд', news:'Новости', projects:'Проекты помощи', orgs:'Учреждения',
+  gallery:'Галерея', reports:'Отчёты', inbox:'Входящие', donations:'Пожертвования',
+  pages:'Страницы', settings:'Настройки', profile:'Профиль',
+}
+const CTA = {
+  dashboard:{lbl:'Новая запись', go:() => openEditPost(null)},
+  news:    {lbl:'Новая запись', go:() => openEditPost(null)},
+  projects:{lbl:'Новый проект', go:() => openEditProject(null)},
+  orgs:    {lbl:'Добавить учреждение', go:() => openEditOrg(null)},
+  gallery: {lbl:'Новый альбом', go:() => openEditAlbum(null)},
+  reports: {lbl:'Загрузить отчёт', go:() => openUploadReport()},
+  inbox:   {lbl:'Создать вручную', go:() => toast('Открыть форму ручной заявки')},
+  donations:{lbl:'Импорт', go:() => toast('Импорт пожертвований из CSV')},
+  pages:   {lbl:'Новая страница', go:() => openEditPage(null)},
+  settings:{lbl:'Сохранить', go:() => saveSettings()},
+  profile: {lbl:'Сохранить', go:() => saveProfile()},
+}
+
+function navigate(p){
+  if (!PAGE_TITLE[p]) p = 'dashboard'
+  $$('.page').forEach(el => el.classList.toggle('active', el.dataset.page === p))
+  $$('.nav').forEach(el => el.classList.toggle('on', el.dataset.go === p))
+  $('#crumbPage').textContent = PAGE_TITLE[p]
+  $('#topbarCtaLbl').textContent = CTA[p].lbl
+  $('#globalSearch').value = ''
+  searchQuery = ''
+  renderNews()
+  // scroll to top
+  $('.main').scrollTo?.({top:0})
+  window.scrollTo({top:0})
+}
+
+// ──────────────── NEWS ────────────────
+let newsFilter = 'all', searchQuery = ''
+function visibleNews(){
+  return POSTS.filter(p => {
+    if (newsFilter !== 'all' && p.status !== newsFilter) return false
+    if (searchQuery && !(p.title.toLowerCase().includes(searchQuery) || p.excerpt.toLowerCase().includes(searchQuery))) return false
+    return true
+  })
+}
+const STATUS_NEWS = {pub:['Опубликовано','pub'], draft:['Черновик','draft'], sched:['Запланировано','sched']}
+function renderNews(){
+  const list = visibleNews()
+  const tbody = $('#newsTable tbody')
+  if (!list.length){ tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--mut);padding:32px">Ничего не нашлось</td></tr>`; return }
+  tbody.innerHTML = list.map(p => {
+    const [lbl,cls] = STATUS_NEWS[p.status]
+    return `<tr data-id="${p.id}">
+      <td><div class="np"><div class="thumb" style="background:linear-gradient(135deg,${p.color},${shade(p.color,-25)})">${p.mark}</div><div style="min-width:0"><b>${escapeHtml(p.title)}</b><small>${escapeHtml(p.excerpt)}</small></div></div></td>
+      <td><span class="cat">${escapeHtml(p.cat)}</span></td>
+      <td><span class="pill ${cls}">${lbl}</span></td>
+      <td style="color:var(--mut);white-space:nowrap">${p.date}</td>
+      <td><span class="views"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>${fmt(p.views)}</span></td>
+      <td><div class="act">
+        <button data-act="edit-post" data-id="${p.id}" title="Редактировать"><svg viewBox="0 0 24 24"><path d="M11 4H4v16h16v-7"/><path d="M18.5 2.5a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+        <button data-act="view-post" data-id="${p.id}" title="Посмотреть"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>
+        <button data-act="del-post" data-id="${p.id}" class="del" title="Удалить"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M5 6l1 14h12l1-14"/></svg></button>
+      </div></td>
+    </tr>`
+  }).join('')
+
+  // also fill dashRecent with latest 5
+  $('#dashRecent').innerHTML = POSTS.slice(0,5).map(p => {
+    const [lbl,cls] = STATUS_NEWS[p.status]
+    return `<tr><td><div class="np"><div class="thumb" style="background:linear-gradient(135deg,${p.color},${shade(p.color,-25)})">${p.mark}</div><div style="min-width:0"><b>${escapeHtml(p.title)}</b><small>${p.date}</small></div></div></td><td style="text-align:right;padding-right:18px"><span class="pill ${cls}">${lbl}</span></td></tr>`
+  }).join('')
+}
+
+function openEditPost(id){
+  const p = id ? POSTS.find(x => x.id === id) : {title:'',excerpt:'',cat:'Отчёт'}
+  openPanel(id ? 'Редактировать запись' : 'Новая запись',
+    `<div class="fld"><label>Заголовок</label><input id="pTitle" value="${escapeHtml(p.title||'')}"></div>
+     <div class="fld"><label>Анонс</label><textarea id="pExc">${escapeHtml(p.excerpt||'')}</textarea></div>
+     <div class="fld"><label>Категория</label><select id="pCat">${['Отчёт','Сбор','Волонтёры','История','Письмо','Событие'].map(c => `<option ${c===(p.cat||'')?'selected':''}>${c}</option>`).join('')}</select></div>
+     <div class="fld"><label>Статус</label><select id="pStat"><option value="pub" ${p.status==='pub'?'selected':''}>Опубликовать</option><option value="draft" ${p.status==='draft'?'selected':''}>Черновик</option><option value="sched" ${p.status==='sched'?'selected':''}>Запланировать</option></select></div>`,
+    `<button class="btn btn-ghost" data-act="panel-close">Отмена</button><button class="btn btn-pri" data-act="save-post" data-id="${id||''}">${id?'Сохранить':'Создать'}</button>`
+  )
+}
+function savePost(id){
+  const data = {title: $('#pTitle').value.trim(), excerpt: $('#pExc').value.trim(), cat: $('#pCat').value, status: $('#pStat').value}
+  if (!data.title){ toast('Заголовок обязателен'); return }
+  if (id){
+    const p = POSTS.find(x => x.id === +id)
+    Object.assign(p, data)
+    toast('✓ Запись обновлена')
+  } else {
+    const colors = ['#2563eb','#16a34a','#7c3aed','#f59e0b','#ec4899','#0891b2']
+    POSTS.unshift({id: Date.now(), ...data, date: new Date().toLocaleDateString('ru-RU'), views:0, color: colors[POSTS.length%colors.length], mark: data.cat[0]})
+    toast('✓ Запись создана')
+  }
+  closePanel(); renderNews()
+}
+function viewPost(id){
+  const p = POSTS.find(x => x.id === id)
+  openPanel(p.title,
+    `<div class="fld"><label>Категория</label><div>${escapeHtml(p.cat)}</div></div>
+     <div class="fld"><label>Дата</label><div>${p.date}</div></div>
+     <div class="fld"><label>Просмотры</label><div>${fmt(p.views)}</div></div>
+     <div class="fld"><label>Анонс</label><div style="color:var(--ink-2)">${escapeHtml(p.excerpt)}</div></div>`,
+    `<button class="btn btn-ghost" data-act="panel-close">Закрыть</button><button class="btn btn-pri" data-act="edit-post" data-id="${p.id}">Редактировать</button>`
+  )
+}
+function delPost(id){
+  const i = POSTS.findIndex(x => x.id === id)
+  if (i<0) return
   const n = POSTS[i].title
-  POSTS.splice(i,1)
-  render()
-  toast('✓ Удалено: ' + n)
+  if (!confirm(`Удалить "${n}"?`)) return
+  POSTS.splice(i,1); renderNews(); toast('✓ Удалено')
 }
-function openNew(){ toast('Открыть редактор новой записи') }
 
-document.getElementById('tabs').addEventListener('click', e => {
-  const btn = e.target.closest('button')
-  if (!btn) return
-  document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('on'))
-  btn.classList.add('on')
-  activeFilter = btn.dataset.f
-  render()
+// ──────────────── PROJECTS ────────────────
+const STATUS_PROJ = {pub:['Активен','pub'], sched:['Скоро','sched'], draft:['Черновик','draft'], done:['Закрыт','done']}
+function renderProjects(){
+  const tbody = $('#projTable tbody')
+  tbody.innerHTML = PROJECTS.map(p => {
+    const pct = p.target ? Math.min(100, Math.round(p.raised/p.target*100)) : 0
+    const [lbl,cls] = STATUS_PROJ[p.status] || ['—','draft']
+    return `<tr>
+      <td><b>${escapeHtml(p.name)}</b></td>
+      <td style="color:var(--mut)">${escapeHtml(p.org)}</td>
+      <td><span class="pill ${cls}">${lbl}</span></td>
+      <td><div class="prog"><div class="prog-bar"><div class="prog-fill" style="width:${pct}%"></div></div><div class="prog-meta"><span><b>₽ ${fmt(p.raised)}</b> из ₽ ${fmt(p.target)}</span><span>${pct}%</span></div></div></td>
+      <td style="color:var(--mut);white-space:nowrap">${p.deadline}</td>
+      <td><div class="act">
+        <button data-act="edit-project" data-id="${p.id}" title="Редактировать"><svg viewBox="0 0 24 24"><path d="M11 4H4v16h16v-7"/><path d="M18.5 2.5a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+        <button data-act="del-project" data-id="${p.id}" class="del" title="Удалить"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M5 6l1 14h12l1-14"/></svg></button>
+      </div></td>
+    </tr>`
+  }).join('')
+}
+function openEditProject(id){
+  const p = id ? PROJECTS.find(x => x.id === id) : {name:'',org:'',status:'pub',target:0,raised:0,deadline:''}
+  openPanel(id ? 'Редактировать проект' : 'Новый проект',
+    `<div class="fld"><label>Название</label><input id="prName" value="${escapeHtml(p.name)}"></div>
+     <div class="fld"><label>Учреждение</label><input id="prOrg" value="${escapeHtml(p.org)}"></div>
+     <div class="fld"><label>Цель сбора (₽)</label><input id="prTarget" type="number" value="${p.target}"></div>
+     <div class="fld"><label>Собрано (₽)</label><input id="prRaised" type="number" value="${p.raised}"></div>
+     <div class="fld"><label>Дедлайн</label><input id="prDl" value="${escapeHtml(p.deadline)}" placeholder="дд.мм.гггг"></div>
+     <div class="fld"><label>Статус</label><select id="prStat"><option value="pub" ${p.status==='pub'?'selected':''}>Активен</option><option value="sched" ${p.status==='sched'?'selected':''}>Скоро</option><option value="draft" ${p.status==='draft'?'selected':''}>Черновик</option><option value="done" ${p.status==='done'?'selected':''}>Закрыт</option></select></div>`,
+    `<button class="btn btn-ghost" data-act="panel-close">Отмена</button><button class="btn btn-pri" data-act="save-project" data-id="${id||''}">${id?'Сохранить':'Создать'}</button>`
+  )
+}
+function saveProject(id){
+  const d = {name: $('#prName').value.trim(), org: $('#prOrg').value.trim(), target: +$('#prTarget').value||0, raised: +$('#prRaised').value||0, deadline: $('#prDl').value.trim() || '—', status: $('#prStat').value}
+  if (!d.name){ toast('Название обязательно'); return }
+  if (id){ Object.assign(PROJECTS.find(x => x.id === +id), d); toast('✓ Проект обновлён') }
+  else { PROJECTS.unshift({id: Date.now(), ...d}); toast('✓ Проект создан') }
+  closePanel(); renderProjects()
+}
+function delProject(id){
+  const i = PROJECTS.findIndex(x => x.id === id); if (i<0) return
+  if (!confirm(`Удалить проект "${PROJECTS[i].name}"?`)) return
+  PROJECTS.splice(i,1); renderProjects(); toast('✓ Удалено')
+}
+
+// ──────────────── ORGS ────────────────
+function renderOrgs(){
+  const tbody = $('#orgsTable tbody')
+  tbody.innerHTML = ORGS.map(o => `<tr>
+    <td><b>${escapeHtml(o.name)}</b></td>
+    <td style="color:var(--mut)">${escapeHtml(o.city)}</td>
+    <td>${escapeHtml(o.contact)}<br><small style="color:var(--mut)">${escapeHtml(o.phone)}</small></td>
+    <td>${o.projects}</td>
+    <td><div class="act">
+      <button data-act="edit-org" data-id="${o.id}" title="Редактировать"><svg viewBox="0 0 24 24"><path d="M11 4H4v16h16v-7"/><path d="M18.5 2.5a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+      <button data-act="del-org" data-id="${o.id}" class="del" title="Удалить"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M5 6l1 14h12l1-14"/></svg></button>
+    </div></td>
+  </tr>`).join('')
+}
+function openEditOrg(id){
+  const o = id ? ORGS.find(x => x.id === id) : {name:'',city:'',contact:'',phone:'',projects:0}
+  openPanel(id ? 'Редактировать учреждение' : 'Новое учреждение',
+    `<div class="fld"><label>Название</label><input id="oName" value="${escapeHtml(o.name)}"></div>
+     <div class="fld"><label>Город</label><input id="oCity" value="${escapeHtml(o.city)}"></div>
+     <div class="fld"><label>Контактное лицо</label><input id="oContact" value="${escapeHtml(o.contact)}"></div>
+     <div class="fld"><label>Телефон</label><input id="oPhone" value="${escapeHtml(o.phone)}"></div>`,
+    `<button class="btn btn-ghost" data-act="panel-close">Отмена</button><button class="btn btn-pri" data-act="save-org" data-id="${id||''}">${id?'Сохранить':'Создать'}</button>`
+  )
+}
+function saveOrg(id){
+  const d = {name: $('#oName').value.trim(), city: $('#oCity').value.trim(), contact: $('#oContact').value.trim(), phone: $('#oPhone').value.trim()}
+  if (!d.name){ toast('Название обязательно'); return }
+  if (id){ Object.assign(ORGS.find(x => x.id === +id), d); toast('✓ Сохранено') }
+  else { ORGS.unshift({id: Date.now(), ...d, projects:0}); toast('✓ Создано') }
+  closePanel(); renderOrgs()
+}
+function delOrg(id){
+  const i = ORGS.findIndex(x => x.id === id); if (i<0) return
+  if (!confirm(`Удалить "${ORGS[i].name}"?`)) return
+  ORGS.splice(i,1); renderOrgs(); toast('✓ Удалено')
+}
+
+// ──────────────── GALLERY ────────────────
+function renderGallery(){
+  $('#galleryGrid').innerHTML = ALBUMS.map(a => `
+    <div class="gal-card" data-act="open-album" data-id="${a.id}">
+      <div class="gal-cover" style="background:linear-gradient(135deg,${a.color},${shade(a.color,-25)})">${a.count}</div>
+      <div class="gal-body"><b>${escapeHtml(a.name)}</b><small>${a.date} · ${a.count} фото</small></div>
+    </div>`).join('')
+}
+function openEditAlbum(id){
+  const a = id ? ALBUMS.find(x => x.id === id) : {name:'',date:'',count:0,color:'#2563eb'}
+  openPanel(id ? 'Альбом' : 'Новый альбом',
+    `<div class="fld"><label>Название</label><input id="aName" value="${escapeHtml(a.name)}"></div>
+     <div class="fld"><label>Дата</label><input id="aDate" value="${escapeHtml(a.date)}" placeholder="дд.мм.гггг"></div>
+     <div class="fld"><label>Загрузить фотографии</label><input type="file" multiple><small>В демо файлы не загружаются. Счётчик ниже.</small></div>
+     <div class="fld"><label>Количество фото</label><input id="aCount" type="number" value="${a.count}"></div>`,
+    `<button class="btn btn-ghost" data-act="panel-close">Отмена</button>${id?`<button class="btn btn-danger" data-act="del-album" data-id="${id}">Удалить альбом</button>`:''}<button class="btn btn-pri" data-act="save-album" data-id="${id||''}">${id?'Сохранить':'Создать'}</button>`
+  )
+}
+function saveAlbum(id){
+  const d = {name: $('#aName').value.trim(), date: $('#aDate').value.trim() || new Date().toLocaleDateString('ru-RU'), count: +$('#aCount').value||0}
+  if (!d.name){ toast('Название обязательно'); return }
+  const colors = ['#2563eb','#16a34a','#7c3aed','#f59e0b','#ec4899','#0891b2']
+  if (id){ Object.assign(ALBUMS.find(x => x.id === +id), d); toast('✓ Сохранено') }
+  else { ALBUMS.unshift({id: Date.now(), ...d, color: colors[ALBUMS.length%colors.length]}); toast('✓ Альбом создан') }
+  closePanel(); renderGallery()
+}
+function delAlbum(id){
+  const i = ALBUMS.findIndex(x => x.id === id); if (i<0) return
+  if (!confirm(`Удалить альбом "${ALBUMS[i].name}"?`)) return
+  ALBUMS.splice(i,1); renderGallery(); closePanel(); toast('✓ Альбом удалён')
+}
+
+// ──────────────── REPORTS ────────────────
+function renderReports(){
+  $('#reportsTable tbody').innerHTML = REPORTS.map(r => `<tr>
+    <td><b>${escapeHtml(r.name)}</b></td>
+    <td style="color:var(--mut)">${escapeHtml(r.period)}</td>
+    <td style="color:var(--mut)">${r.size}</td>
+    <td style="color:var(--mut)">${r.uploaded}</td>
+    <td><div class="act">
+      <button data-act="dl-report" data-id="${r.id}" title="Скачать"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></button>
+      <button data-act="del-report" data-id="${r.id}" class="del" title="Удалить"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M5 6l1 14h12l1-14"/></svg></button>
+    </div></td>
+  </tr>`).join('')
+}
+function openUploadReport(){
+  openPanel('Загрузить отчёт',
+    `<div class="fld"><label>Название</label><input id="rName" placeholder="Финансовый отчёт за..."></div>
+     <div class="fld"><label>Период</label><input id="rPer" placeholder="Q2 2026 или Год 2025"></div>
+     <div class="fld"><label>Файл (PDF)</label><input type="file" accept=".pdf"><small>В демо файл не сохраняется.</small></div>`,
+    `<button class="btn btn-ghost" data-act="panel-close">Отмена</button><button class="btn btn-pri" data-act="save-report">Загрузить</button>`
+  )
+}
+function saveReport(){
+  const d = {name: $('#rName').value.trim(), period: $('#rPer').value.trim()}
+  if (!d.name){ toast('Название обязательно'); return }
+  REPORTS.unshift({id: Date.now(), ...d, size: '— КБ', uploaded: new Date().toLocaleDateString('ru-RU')})
+  closePanel(); renderReports(); toast('✓ Отчёт загружен')
+}
+function delReport(id){
+  const i = REPORTS.findIndex(x => x.id === id); if (i<0) return
+  if (!confirm(`Удалить "${REPORTS[i].name}"?`)) return
+  REPORTS.splice(i,1); renderReports(); toast('✓ Удалено')
+}
+
+// ──────────────── INBOX ────────────────
+let inboxFilter = 'all'
+const STATUS_INBOX = {new:['Новая','new'], review:['В работе','review'], done:['Закрыта','done']}
+function renderInbox(){
+  const tbody = $('#inboxTable tbody')
+  const list = INBOX.filter(x => inboxFilter==='all' || x.status===inboxFilter)
+  if (!list.length){ tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--mut);padding:32px">Пусто</td></tr>`; return }
+  tbody.innerHTML = list.map(m => {
+    const [lbl,cls] = STATUS_INBOX[m.status]
+    return `<tr>
+      <td><b>${escapeHtml(m.from)}</b></td>
+      <td>${escapeHtml(m.subj)}</td>
+      <td><span class="pill ${cls}">${lbl}</span></td>
+      <td style="color:var(--mut);white-space:nowrap">${m.date}</td>
+      <td><div class="act">
+        <button data-act="open-inbox" data-id="${m.id}" title="Открыть"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>
+        <button data-act="del-inbox" data-id="${m.id}" class="del" title="Удалить"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M5 6l1 14h12l1-14"/></svg></button>
+      </div></td>
+    </tr>`
+  }).join('')
+}
+function openInboxItem(id){
+  const m = INBOX.find(x => x.id === id); if (!m) return
+  openPanel(m.subj,
+    `<div class="fld"><label>От</label><div>${escapeHtml(m.from)}</div></div>
+     <div class="fld"><label>Дата</label><div>${m.date}</div></div>
+     <div class="fld"><label>Статус</label><select id="iStat">${Object.entries(STATUS_INBOX).map(([k,[l]]) => `<option value="${k}" ${m.status===k?'selected':''}>${l}</option>`).join('')}</select></div>
+     <div class="fld"><label>Заметка</label><textarea placeholder="Внутренние комментарии команды"></textarea></div>`,
+    `<button class="btn btn-ghost" data-act="panel-close">Закрыть</button><button class="btn btn-pri" data-act="save-inbox" data-id="${m.id}">Сохранить</button>`
+  )
+}
+function saveInbox(id){
+  const m = INBOX.find(x => x.id === id); if (!m) return
+  m.status = $('#iStat').value
+  closePanel(); renderInbox(); toast('✓ Сохранено')
+}
+function delInbox(id){
+  const i = INBOX.findIndex(x => x.id === id); if (i<0) return
+  if (!confirm('Удалить заявку?')) return
+  INBOX.splice(i,1); renderInbox(); toast('✓ Удалено')
+}
+
+// ──────────────── DONATIONS ────────────────
+const STATUS_DON = {paid:['Прошёл','paid'], pending:['В обработке','pending'], fail:['Ошибка','fail']}
+function renderDonations(){
+  $('#donTable tbody').innerHTML = DONATIONS.map(d => {
+    const [lbl,cls] = STATUS_DON[d.status]
+    return `<tr>
+      <td><b>${escapeHtml(d.donor)}</b></td>
+      <td style="font-weight:600">₽ ${fmt(d.amount)}</td>
+      <td style="color:var(--mut)">${escapeHtml(d.project)}</td>
+      <td><span class="pill ${cls}">${lbl}</span></td>
+      <td style="color:var(--mut);white-space:nowrap">${d.date}</td>
+    </tr>`
+  }).join('')
+}
+
+// ──────────────── PAGES ────────────────
+function renderPages(){
+  const tbody = $('#pagesTable tbody')
+  tbody.innerHTML = PAGES.map((p,i) => `<tr>
+    <td><b>${escapeHtml(p.name)}</b></td>
+    <td style="color:var(--mut);font-family:ui-monospace,SF Mono,Menlo,monospace;font-size:12.5px">${escapeHtml(p.url)}</td>
+    <td><span class="pill ${p.status==='pub'?'pub':'draft'}">${p.status==='pub'?'Опубликована':'Черновик'}</span></td>
+    <td style="color:var(--mut);white-space:nowrap">${p.upd}</td>
+    <td><div class="act">
+      <button data-act="edit-page" data-id="${i}" title="Редактировать"><svg viewBox="0 0 24 24"><path d="M11 4H4v16h16v-7"/><path d="M18.5 2.5a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+      <button data-act="del-page" data-id="${i}" class="del" title="Удалить"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M5 6l1 14h12l1-14"/></svg></button>
+    </div></td>
+  </tr>`).join('')
+}
+function openEditPage(i){
+  const p = i!==null && i!==undefined && i!=='' ? PAGES[i] : {name:'',url:'/',status:'draft',upd:''}
+  openPanel(i!==null && i!==''?'Редактировать страницу':'Новая страница',
+    `<div class="fld"><label>Заголовок</label><input id="pgName" value="${escapeHtml(p.name)}"></div>
+     <div class="fld"><label>URL</label><input id="pgUrl" value="${escapeHtml(p.url)}"></div>
+     <div class="fld"><label>Контент</label><textarea placeholder="Редактор статичного контента (демо)"></textarea></div>
+     <div class="fld"><label>Статус</label><select id="pgStat"><option value="pub" ${p.status==='pub'?'selected':''}>Опубликована</option><option value="draft" ${p.status==='draft'?'selected':''}>Черновик</option></select></div>`,
+    `<button class="btn btn-ghost" data-act="panel-close">Отмена</button><button class="btn btn-pri" data-act="save-page" data-id="${i!==undefined?i:''}">Сохранить</button>`
+  )
+}
+function savePage(i){
+  const d = {name: $('#pgName').value.trim(), url: $('#pgUrl').value.trim(), status: $('#pgStat').value, upd: new Date().toLocaleDateString('ru-RU')}
+  if (!d.name){ toast('Заголовок обязателен'); return }
+  if (i!==''&&i!==null&&i!==undefined&&PAGES[i]) Object.assign(PAGES[i], d)
+  else PAGES.unshift(d)
+  closePanel(); renderPages(); toast('✓ Сохранено')
+}
+function delPage(i){
+  if (i==null||!PAGES[i]) return
+  if (!confirm(`Удалить страницу "${PAGES[i].name}"?`)) return
+  PAGES.splice(i,1); renderPages(); toast('✓ Удалено')
+}
+
+// ──────────────── SETTINGS + PROFILE ────────────────
+function saveSettings(){ toast('✓ Настройки сохранены') }
+function resetSettings(){
+  $('#setName').value = 'Давай делать добро вместе'
+  $('#setEmail').value = 'info@3dv.ru'
+  $('#setPhone').value = '+7 (4822) 50-50-50'
+  $('#setCity').value = 'Тверь'
+  $('#setDesc').value = 'Помогаем детским учреждениям Тверской области с 2018 года.'
+  $('#setVk').value = 'https://vk.com/3dv_fond'
+  $('#setTg').value = 'https://t.me/3dv_fond'
+  toast('Сброшено к исходным')
+}
+function saveProfile(){ toast('✓ Профиль обновлён') }
+function logout(){
+  if (confirm('Выйти из админки?')) toast('Сессия завершена (демо)')
+}
+
+// ──────────────── DELEGATED CLICKS ────────────────
+document.addEventListener('click', e => {
+  // sidebar / data-go navigation
+  const nav = e.target.closest('[data-go]')
+  if (nav){ navigate(nav.dataset.go); return }
+
+  // actions
+  const a = e.target.closest('[data-act]')
+  if (!a) return
+  const id = a.dataset.id ? +a.dataset.id : null
+  const idx = a.dataset.id !== undefined ? a.dataset.id : null
+  const act = a.dataset.act
+
+  switch(act){
+    case 'panel-close':     closePanel(); break
+    // news
+    case 'edit-post':       openEditPost(id); break
+    case 'view-post':       viewPost(id); break
+    case 'del-post':        delPost(id); break
+    case 'save-post':       savePost(idx); break
+    case 'filter-cat':      toast('Фильтр по категории — демо'); break
+    case 'filter-date':     toast('Фильтр по дате — демо'); break
+    case 'export-news':     toast('✓ Экспорт новостей: CSV'); break
+    // projects
+    case 'edit-project':    openEditProject(id); break
+    case 'del-project':     delProject(id); break
+    case 'save-project':    saveProject(idx); break
+    case 'export-projects': toast('✓ Экспорт проектов: CSV'); break
+    // orgs
+    case 'edit-org':        openEditOrg(id); break
+    case 'del-org':         delOrg(id); break
+    case 'save-org':        saveOrg(idx); break
+    // gallery
+    case 'open-album':      openEditAlbum(id); break
+    case 'save-album':      saveAlbum(idx); break
+    case 'del-album':       delAlbum(id); break
+    // reports
+    case 'dl-report':       toast('Скачивание начнётся (демо)'); break
+    case 'save-report':     saveReport(); break
+    case 'del-report':      delReport(id); break
+    // inbox
+    case 'open-inbox':      openInboxItem(id); break
+    case 'save-inbox':      saveInbox(idx); break
+    case 'del-inbox':       delInbox(id); break
+    // donations
+    case 'export-donations':toast('✓ Экспорт пожертвований: CSV'); break
+    // pages
+    case 'edit-page':       openEditPage(idx); break
+    case 'save-page':       savePage(idx); break
+    case 'del-page':        delPage(+idx); break
+    // settings
+    case 'settings-save':   saveSettings(); break
+    case 'settings-reset':  resetSettings(); break
+    // profile
+    case 'profile-save':    saveProfile(); break
+    case 'logout':          logout(); break
+  }
 })
 
-document.getElementById('globalSearch').addEventListener('input', e => {
-  searchQuery = e.target.value.toLowerCase().trim()
-  render()
+// inbox tabs
+$('#inboxTabs').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return
+  $$('#inboxTabs button').forEach(x => x.classList.remove('on'))
+  b.classList.add('on'); inboxFilter = b.dataset.f; renderInbox()
+})
+// news tabs
+$('#newsTabs').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return
+  $$('#newsTabs button').forEach(x => x.classList.remove('on'))
+  b.classList.add('on'); newsFilter = b.dataset.f; renderNews()
+})
+// search
+$('#globalSearch').addEventListener('input', e => {
+  searchQuery = e.target.value.toLowerCase().trim(); renderNews()
+})
+// topbar
+$('#topbarPeriod').addEventListener('click', () => toast('Выбор периода: за 7 дней'))
+$('#topbarCta').addEventListener('click', () => {
+  const cur = $('.page.active')?.dataset.page || 'news'
+  CTA[cur].go()
 })
 
-render()
+// initial render
+renderNews(); renderProjects(); renderOrgs(); renderGallery(); renderReports(); renderInbox(); renderDonations(); renderPages()
 </script>
 </body>
 </html>
